@@ -9,6 +9,7 @@ const { title } = Astro.props;
 import BarraAnuncio from '../components/BarraAnuncio.astro'
 import Navbar from '../components/Navbar.astro'
 import { ViewTransitions } from "astro:transitions";
+import Footer from "./Footer.astro";
 ---
 
 <html data-theme="light" lang="en">
@@ -59,6 +60,7 @@ import { ViewTransitions } from "astro:transitions";
     <BarraAnuncio/>
     <Navbar/>
     <slot />
+    <Footer/>
     <style is:global>
       code {
         font-family:

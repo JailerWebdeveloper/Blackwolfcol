@@ -1,70 +1,186 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ProductCard from '../components/ProductCard.astro';
+import Layout from "../layouts/Layout.astro";
+import ProductCard from "../components/ProductCard.astro";
 
-import Carrousel from '../components/Carrousel.astro';
+import Carrousel from "../components/Carrousel.astro";
 
 const data = [
-    {
-      Image: "https://i.pinimg.com/564x/e6/38/2f/e6382f90db553309ae56af79ffdeead7.jpg",
-      alt: "IMAGEN",
-      Discount: "",
-      Productname: "CAMISA",
-      price:2400
-    },
-    {
-      Image: "https://i.pinimg.com/564x/e3/fa/37/e3fa37a06e0601fa8d04806e95c9f7c3.jpg",
-      alt: "IMAGEN",
-      Discount: "",
-      Productname: "CAMISA",
-      price:2400
-    },
-    {
-      Image: "https://i.pinimg.com/564x/aa/d2/d0/aad2d07cc38a8d30ce5a47bcef9652a8.jpg",
-      alt: "IMAGEN",
-      Discount: "",
-      Productname: "CAMISA",
-      price:2400
-    },
+  {
+    Image:
+      "https://i.pinimg.com/564x/e6/38/2f/e6382f90db553309ae56af79ffdeead7.jpg",
+    alt: "IMAGEN",
+    Discount: "",
+    Productname: "CAMISA",
+    price: 2400,
+  },
+  {
+    Image:
+      "https://i.pinimg.com/564x/e3/fa/37/e3fa37a06e0601fa8d04806e95c9f7c3.jpg",
+    alt: "IMAGEN",
+    Discount: "",
+    Productname: "CAMISA",
+    price: 2400,
+  },
+  {
+    Image:
+      "https://i.pinimg.com/564x/aa/d2/d0/aad2d07cc38a8d30ce5a47bcef9652a8.jpg",
+    alt: "IMAGEN",
+    Discount: "",
+    Productname: "CAMISA",
+    price: 2400,
+  },
 
-    {
-      Image: "https://i.pinimg.com/564x/aa/d2/d0/aad2d07cc38a8d30ce5a47bcef9652a8.jpg",
-      alt: "IMAGEN",
-      Discount: "",
-      Productname: "CAMISA",
-      price:2400
-    },
-
-    
-  ];
+  {
+    Image:
+      "https://i.pinimg.com/564x/aa/d2/d0/aad2d07cc38a8d30ce5a47bcef9652a8.jpg",
+    alt: "IMAGEN",
+    Discount: "",
+    Productname: "CAMISA",
+    price: 2400,
+  },
+];
 ---
 
 <Layout title="Blackwolf/Home">
-	<main class="w-full h-full flex flex-col ">
-        <section id="HomeHero" class="w-full h-[90vh] flex flex-col border">
-            <div class="hero w-full h-full bg-base-200">
-                <div class="hero-content text-center">
-                  <div class="max-w-md">
-                    <h1 class="text-5xl font-bold">Hello there</h1>
-                    <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button class="btn btn-primary">Get Started</button>
-                  </div>
-                </div>
-              </div>
-        </section>
-        <Carrousel/>
-        <section class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-5 justify-center items-center">
-          <h1 class="md:text-6xl text-4xl font-bold uppercase antialiased">Nueva coleccion</h1>
-          <div class="divider text-slate-400 mx-auto w-4/5"></div>
-          <div class="w-full grid md:grid-cols-4  grid-cols-2 grid-rows-auto place-content-center place-items-center gap-4">
-            {data.map((shirt)=>(
-              <ProductCard Discount={shirt.Discount} alt={shirt.alt} Image={shirt.Image} ProductName={shirt.Productname} Price={shirt.price} />
-            ))}
-
+  <main class="w-full h-full flex flex-col">
+    <section id="HomeHero" class="w-full h-[90vh] flex flex-col border">
+      <div class="hero w-full h-full bg-base-200">
+        <div class="hero-content text-center">
+          <div class="max-w-md">
+            <h1 class="text-5xl font-bold">Hello there</h1>
+            <p class="py-6">
+              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
+              et a id nisi.
+            </p>
+            <button class="btn btn-primary">Get Started</button>
           </div>
+        </div>
+      </div>
+    </section>
+    <Carrousel />
 
-        </section>
-    </main>
+    <section
+      class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-10 justify-center items-center"
+    >
+      <h1 class="md:text-6xl text-4xl font-extrabold uppercase antialiased">
+        Nueva coleccion
+      </h1>
+      <div
+        class="w-full grid md:grid-cols-4 grid-cols-2 grid-rows-auto place-content-center place-items-center gap-4"
+      >
+        {
+          data.map((shirt) => (
+            <ProductCard
+              Discount={shirt.Discount}
+              alt={shirt.alt}
+              Image={shirt.Image}
+              ProductName={shirt.Productname}
+              Price={shirt.price}
+            />
+          ))
+        }
+      </div>
+
+      <button
+        class="rounded-full text-center btn bg-transparent btn-wide link border-2"
+        >view more</button
+      >
+    </section>
+    <div class="divider text-slate-400 mx-auto w-4/5"></div>
+
+    <section
+      class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-10 justify-center items-center"
+    >
+      <h1 class="md:text-6xl text-4xl font-extrabold uppercase antialiased">
+        Top ventas
+      </h1>
+      <div
+        class="w-full grid md:grid-cols-4 grid-cols-2 grid-rows-auto place-content-center place-items-center gap-4"
+      >
+        {
+          data.map((shirt) => (
+            <ProductCard
+              Discount={shirt.Discount}
+              alt={shirt.alt}
+              Image={shirt.Image}
+              ProductName={shirt.Productname}
+              Price={shirt.price}
+            />
+          ))
+        }
+      </div>
+
+      <button
+        class="rounded-full text-center btn bg-transparent btn-wide link border-2"
+        >view more</button
+      >
+    </section>
+
+    <section
+      class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-10 justify-center items-center"
+    >
+    <h class="text-4xl md:text-6xl uppercase font-extrabold antialiased text-center">Categorias</h>
+      <div
+        class="bg-slate-200 rounded-2xl w-full h-[80vh] gap-4 p-10 grid md:grid-rows-2 grid-rows-3 grid-cols-2 md:grid-cols-3"
+      >
+        <div
+          class="col-span-2 relative w-full h-full hover:scale-105 transition-all hover:ring hover:cursor-pointer rounded-2xl"
+        >
+          <img
+            src="https://i.pinimg.com/736x/19/88/9f/19889f3a22ad71425b0ad054a249ad95.jpg"
+            alt=""
+            class="object-cover w-full h-full rounded-2xl"
+          />
+          <p
+            class="text-white font-extrabold absolute md:top-14 md:left-14 left-10 top-10 z-10 uppercase md:text-6xl"
+          >
+            Aestetic
+          </p>
+        </div>
+        <div
+          class="col-span-1 relative w-full hover:scale-105 transition-all hover:ring hover:cursor-pointer h-full rounded-2xl"
+        >
+          <img
+            src="https://i.pinimg.com/736x/19/88/9f/19889f3a22ad71425b0ad054a249ad95.jpg"
+            alt=""
+            class="object-cover w-full h-full rounded-2xl"
+          />
+          <p
+            class="text-white font-extrabold absolute md:top-14 md:left-14 left-10 top-10 uppercase md:text-6xl"
+          >
+            Urban
+          </p>
+        </div>
+        <div
+          class="col-span-1 relative w-full hover:scale-105 transition-all hover:ring hover:cursor-pointer h-full rounded-2xl"
+        >
+          <img
+            src="https://i.pinimg.com/736x/19/88/9f/19889f3a22ad71425b0ad054a249ad95.jpg"
+            alt=""
+            class="object-cover w-full h-full rounded-2xl"
+          />
+          <p
+            class="text-white font-extrabold absolute md:top-14 md:left-14 left-10 top-10 uppercase md:text-6xl"
+          >
+            Urban
+          </p>
+        </div>
+        <div
+          class="col-span-2 relative w-full h-full hover:scale-105 transition-all hover:ring hover:cursor-pointer rounded-2xl"
+        >
+          <img
+            src="https://i.pinimg.com/736x/19/88/9f/19889f3a22ad71425b0ad054a249ad95.jpg"
+            alt=""
+            class="object-cover w-full h-full rounded-2xl"
+          />
+          <p
+            class="text-white font-extrabold absolute md:top-14 md:left-14 left-10 top-10 uppercase md:text-6xl"
+          >
+            Aestetic
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
-
-
