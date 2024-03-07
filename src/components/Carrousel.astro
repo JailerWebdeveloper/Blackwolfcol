@@ -1,0 +1,61 @@
+<div id="slider" class="h-28 bg-black">
+  <figure class="h-full w-full">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Naruto_logo.svg/2560px-Naruto_logo.svg.png" alt=""  class="object-contain h-full"/>
+    <img src="https://i.pinimg.com/originals/1c/99/90/1c9990cdbbff7b83ebe4736aade5ddc0.png" alt="" class="object-contain h-full" />
+    <img src="https://c0.klipartz.com/pngpicture/807/281/gratis-png-la-extrana-aventura-de-jojo-stardust-crusaders-diamond-es-un-soporte-irrompible-manga-manga.png" alt=""  class="object-contain h-full"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Naruto_logo.svg/2560px-Naruto_logo.svg.png" alt=""  class="object-contain h-full"/>
+
+  </figure>
+</div>
+
+<style is:inline>
+  @keyframes slidy {
+    0% {
+      left: 0%;
+    }
+    20% {
+      left: 0%;
+    }
+    25% {
+      left: -100%;
+    }
+    45% {
+      left: -100%;
+    }
+    50% {
+      left: -200%;
+    }
+    70% {
+      left: -200%;
+    }
+    75% {
+      left: -300%;
+    }
+    95% {
+      left: -300%;
+    }
+    100% {
+      left: -400%;
+    }
+  }
+
+  body {
+    margin: 0;
+  }
+  div#slider {
+    overflow: hidden;
+  }
+  div#slider figure img {
+    width: 20%;
+    float: left;
+  }
+  div#slider figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    text-align: left;
+    font-size: 0;
+    animation: 5s slidy infinite;
+  }
+</style>

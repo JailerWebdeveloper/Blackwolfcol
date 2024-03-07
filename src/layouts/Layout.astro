@@ -1,0 +1,84 @@
+---
+interface Props {
+  title: string;
+}
+import { AstroSeo } from "@astrolib/seo";
+
+const { title } = Astro.props;
+
+import BarraAnuncio from '../components/BarraAnuncio.astro'
+import Navbar from '../components/Navbar.astro'
+import { ViewTransitions } from "astro:transitions";
+---
+
+<html data-theme="light" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <ViewTransitions/>
+    <AstroSeo
+      title="Blackwolf"
+      description=""
+      canonical=""
+      openGraph={{
+        url: "https://www.url.ie/a",
+        title: "Open Graph Title",
+        description: "Open Graph Description",
+        images: [
+          {
+            url: "https://www.example.ie/og-image-01.jpg",
+            width: 800,
+            height: 600,
+            alt: "Og Image Alt",
+            type: "image/jpeg",
+          },
+          {
+            url: "https://www.example.ie/og-image-02.jpg",
+            width: 900,
+            height: 800,
+            alt: "Og Image Alt Second",
+            type: "image/jpeg",
+          },
+          { url: "https://www.example.ie/og-image-03.jpg" },
+          { url: "https://www.example.ie/og-image-04.jpg" },
+        ],
+        site_name: "SiteName",
+      }}
+      twitter={{
+        handle: "@handle",
+        site: "@site",
+        cardType: "summary_large_image",
+      }}
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <BarraAnuncio/>
+    <Navbar/>
+    <slot />
+    <style is:global>
+      code {
+        font-family:
+          Menlo,
+          Monaco,
+          Lucida Console,
+          Liberation Mono,
+          DejaVu Sans Mono,
+          Bitstream Vera Sans Mono,
+          Courier New,
+          monospace;
+      }
+
+      body::-webkit-scrollbar {
+        width: 7px;
+      }
+
+      body::-webkit-scrollbar-thumb {
+        background: #414141;
+      }
+    </style>
+  </body>
+</html>

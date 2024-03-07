@@ -1,0 +1,72 @@
+---
+import { ShoppingCart, Search, AlignJustify } from "lucide-astro";
+---
+
+<nav
+  class="w-full flex md:justify-center  gap-5 justify-between items-center md:px-10 px-2 py-2"
+>
+  <div class="flex gap-5 items-center">
+    <div class="drawer z-10 w-1/5 md:hidden">
+      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+      <div class="drawer-content">
+        <label for="my-drawer" class="btn btn-ghost w-16 drawer-button"
+          ><AlignJustify class="w-full h-full" /></label
+        >
+      </div>
+      <div class="drawer-side">
+        <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"
+        ></label>
+        <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+          <!-- Sidebar content here -->
+          <li><a>Sidebar Item 1</a></li>
+          <li><a>Sidebar Item 2</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="w-42 hover:bg-slate-300 rounded-xl p-2 transition-all hover:cursor-pointer">
+      <img src="/icon.png" class="w-full" alt="Blackwolf Logo" />
+    </div>
+    <ul class="menu menu-horizontal md:flex hidden px-1">
+      <li><a>Item 1</a></li>
+      <li>
+        <details>
+          <summary>Parent</summary>
+          <ul class="p-2">
+            <li><a>Submenu 1</a></li>
+            <li><a>Submenu 2</a></li>
+          </ul>
+        </details>
+      </li>
+      <li><a>Item 3</a></li>
+    </ul>
+  </div>
+  <div class="flex items-center gap-5">
+    <label
+      class="input input-xl rounded-full w-96 bg-slate-300 text-primary md:flex hidden items-center gap-2"
+    >
+      <Search class="w-5" />
+      <input type="text" class="grow" placeholder="Search" />
+    </label>
+
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+        <div class="indicator">
+          <ShoppingCart class="w-8" />
+          <span class="badge badge-sm indicator-item">8</span>
+        </div>
+      </div>
+      <div
+        tabindex="0"
+        class="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
+      >
+        <div class="card-body">
+          <span class="font-bold text-lg">8 Items</span>
+          <span class="text-info">Subtotal: $999</span>
+          <div class="card-actions">
+            <button class="btn btn-primary btn-block">View cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+
+import Carrousel from '../components/Carrousel.astro';
+
+const data = [
+    {
+      Image: "https://i.pinimg.com/564x/e6/38/2f/e6382f90db553309ae56af79ffdeead7.jpg",
+      alt: "IMAGEN",
+      Discount: "",
+      Productname: "CAMISA",
+      price:2400
+    },
+    {
+      Image: "https://i.pinimg.com/564x/e3/fa/37/e3fa37a06e0601fa8d04806e95c9f7c3.jpg",
+      alt: "IMAGEN",
+      Discount: "",
+      Productname: "CAMISA",
+      price:2400
+    },
+    {
+      Image: "https://i.pinimg.com/564x/aa/d2/d0/aad2d07cc38a8d30ce5a47bcef9652a8.jpg",
+      alt: "IMAGEN",
+      Discount: "",
+      Productname: "CAMISA",
+      price:2400
+    },
+
+    {
+      Image: "https://i.pinimg.com/564x/aa/d2/d0/aad2d07cc38a8d30ce5a47bcef9652a8.jpg",
+      alt: "IMAGEN",
+      Discount: "",
+      Productname: "CAMISA",
+      price:2400
+    },
+
+    
+  ];
+---
+
+<Layout title="Blackwolf/Home">
+	<main class="w-full h-full flex flex-col ">
+        <section id="HomeHero" class="w-full h-[90vh] flex flex-col border">
+            <div class="hero w-full h-full bg-base-200">
+                <div class="hero-content text-center">
+                  <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">Hello there</h1>
+                    <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <button class="btn btn-primary">Get Started</button>
+                  </div>
+                </div>
+              </div>
+        </section>
+        <Carrousel/>
+        <section class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-5 justify-center items-center">
+          <h1 class="md:text-6xl text-4xl font-bold uppercase antialiased">Nueva coleccion</h1>
+          <div class="divider text-slate-400 mx-auto w-4/5"></div>
+          <div class="w-full grid md:grid-cols-4  grid-cols-2 grid-rows-auto place-content-center place-items-center gap-4">
+            {data.map((shirt)=>(
+              <ProductCard Discount={shirt.Discount} alt={shirt.alt} Image={shirt.Image} ProductName={shirt.Productname} Price={shirt.price} />
+            ))}
+
+          </div>
+
+        </section>
+    </main>
+</Layout>
+
+
