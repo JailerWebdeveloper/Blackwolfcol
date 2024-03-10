@@ -1,0 +1,40 @@
+---
+import { Sliders, ChevronRight } from "lucide-astro";
+---
+
+<aside class="h-full flex flex-col p-4 gap-2 w-1/5">
+  <div
+    class="rounded-2xl border border-gray-200 flex flex-col py-8 px-5 items-center justify-start w-full h-full"
+  >
+    <div class="w-full flex justify-between">
+      <h1 class="font-bold uppercase text-2xl">Filtros</h1>
+      <Sliders />
+    </div>
+    <div class="divider w-4/5 self-center"></div>
+    <ul class="flex flex-col gap-3 w-full">
+      <li class="flex justify-between">
+        <p class="text-lg antialiased">Camisas</p>
+        <ChevronRight />
+      </li>
+      <li class="flex justify-between">
+        <p class="text-lg antialiased">Shorts</p>
+        <ChevronRight />
+      </li>
+
+      <li class="flex justify-between">
+        <p class="text-lg antialiased">Buzos</p>
+        <ChevronRight />
+      </li>
+
+      <li class="flex justify-between">
+        <p class="text-lg antialiased">Zapatos</p>
+        <ChevronRight />
+      </li>
+
+      <li class="flex justify-between">
+        <p class="text-lg antialiased">Accesorios</p>
+        <ChevronRight />
+      </li>
+    </ul>
+  </div>
+</aside>

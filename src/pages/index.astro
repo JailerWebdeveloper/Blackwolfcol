@@ -1,45 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ProductCard from "../components/ProductCard.astro";
+export const prerender = false;
 
 import Carrousel from "../components/Carrousel.astro";
 import SubscribeCard from "../components/SubscribeCard.astro";
 
-const data = [
-  {
-    Image:
-      "https://i.pinimg.com/564x/e6/38/2f/e6382f90db553309ae56af79ffdeead7.jpg",
-    alt: "IMAGEN",
-    Discount: "",
-    Productname: "CAMISA",
-    price: 2400,
-  },
-  {
-    Image:
-      "https://i.pinimg.com/564x/e3/fa/37/e3fa37a06e0601fa8d04806e95c9f7c3.jpg",
-    alt: "IMAGEN",
-    Discount: "",
-    Productname: "CAMISA",
-    price: 2400,
-  },
-  {
-    Image:
-      "https://i.pinimg.com/564x/aa/d2/d0/aad2d07cc38a8d30ce5a47bcef9652a8.jpg",
-    alt: "IMAGEN",
-    Discount: "",
-    Productname: "CAMISA",
-    price: 2400,
-  },
+import {GetAllProducts} from "../services/GetAllProducts.js"
 
-  {
-    Image:
-      "https://i.pinimg.com/564x/aa/d2/d0/aad2d07cc38a8d30ce5a47bcef9652a8.jpg",
-    alt: "IMAGEN",
-    Discount: "",
-    Productname: "CAMISA",
-    price: 2400,
-  },
-];
+const data = await GetAllProducts()
 ---
 
 <Layout title="Blackwolf/Home">
@@ -70,17 +39,18 @@ const data = [
       <div
         class="w-full grid md:grid-cols-4 grid-cols-2 grid-rows-auto place-content-center place-items-center gap-4"
       >
-        {
-          data.map((shirt) => (
-            <ProductCard
-              Discount={shirt.Discount}
-              alt={shirt.alt}
-              Image={shirt.Image}
-              ProductName={shirt.Productname}
-              Price={shirt.price}
-            />
-          ))
-        }
+      {
+        data.map((shirt) => (
+          <ProductCard
+          id={shirt.id}
+            Discount={shirt.Discount}
+            alt={shirt.alt}
+            Image={shirt.Image}
+            ProductName={shirt.Productname}
+            Price={shirt.price}
+          />
+        ))
+      }
       </div>
 
       <button
@@ -102,6 +72,7 @@ const data = [
         {
           data.map((shirt) => (
             <ProductCard
+            id={shirt.id}
               Discount={shirt.Discount}
               alt={shirt.alt}
               Image={shirt.Image}
