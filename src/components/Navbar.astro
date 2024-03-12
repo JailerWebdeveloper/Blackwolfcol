@@ -3,7 +3,7 @@ import { ShoppingCart, Search, AlignJustify } from "lucide-astro";
 ---
 
 <nav
-  class="w-full flex md:justify-center  gap-10 justify-between items-center md:px-10 px-2 py-2"
+  class="w-full flex md:justify-center z-20 gap-10 justify-between items-center md:px-10 px-2 py-2"
 >
   <div class="flex gap-5 items-center">
     <div class="drawer z-10 w-1/5 md:hidden">
@@ -24,20 +24,20 @@ import { ShoppingCart, Search, AlignJustify } from "lucide-astro";
       </div>
     </div>
     <div class="w-42 hover:bg-slate-300 rounded-xl p-2 transition-all hover:cursor-pointer">
-      <img src="/icon.png" class="w-full" alt="Blackwolf Logo" />
+      <img src="/Logo.svg" class="w-40" alt="Blackwolf Logo" />
     </div>
-    <ul class="menu menu-horizontal md:flex hidden px-1">
-      <li><a>Item 1</a></li>
+    <ul class="menu menu-horizontal md:flex hidden px-1 z-10">
+      <li><a>Tienda</a></li>
       <li>
         <details>
-          <summary>Parent</summary>
+          <summary>Categorias</summary>
           <ul class="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
+            <li><a>Anime</a></li>
+            <li><a>Urbano</a></li>
           </ul>
         </details>
       </li>
-      <li><a>Item 3</a></li>
+      <li><a>Visitanos en redes sociales</a></li>
     </ul>
   </div>
   <div class="flex items-center gap-5">

@@ -6,9 +6,9 @@ export const prerender = false;
 import Carrousel from "../components/Carrousel.astro";
 import SubscribeCard from "../components/SubscribeCard.astro";
 
-import {GetAllProducts} from "../services/GetAllProducts.js"
+import { GetAllProducts } from "../services/GetAllProducts.js";
 
-const data = await GetAllProducts()
+const data = await GetAllProducts();
 ---
 
 <Layout title="Blackwolf/Home">
@@ -28,7 +28,6 @@ const data = await GetAllProducts()
         </div>
       </div>
     </section>
-    <Carrousel />
 
     <section
       class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-10 justify-center items-center"
@@ -39,60 +38,65 @@ const data = await GetAllProducts()
       <div
         class="w-full grid md:grid-cols-4 grid-cols-2 grid-rows-auto place-content-center place-items-center gap-4"
       >
-      {
-        data.map((shirt) => (
-          <ProductCard
-          id={shirt.id}
-            Discount={shirt.Discount}
-            alt={shirt.alt}
-            Image={shirt.Image}
-            ProductName={shirt.Productname}
-            Price={shirt.price}
-          />
-        ))
-      }
-      </div>
-
-      <button
-        class="rounded-full text-center btn bg-transparent btn-wide link border-2"
-        >view more</button
-      >
-    </section>
-    <div class="divider text-slate-400 mx-auto w-4/5"></div>
-
-    <section
-      class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-10 justify-center items-center"
-    >
-      <h1 class="md:text-6xl text-4xl font-extrabold uppercase antialiased">
-        Top ventas
-      </h1>
-      <div
-        class="w-full grid md:grid-cols-4 grid-cols-2 grid-rows-auto place-content-center place-items-center gap-4"
-      >
         {
           data.map((shirt) => (
             <ProductCard
-            id={shirt.id}
-              Discount={shirt.Discount}
-              alt={shirt.alt}
-              Image={shirt.Image}
-              ProductName={shirt.Productname}
-              Price={shirt.price}
+              id={shirt.id}
+              Discount=""
+              alt={shirt.Descripcion}
+              Image={shirt.Imagen}
+              ProductName={shirt.NombreProducto}
+              Price={shirt.Precio}
             />
           ))
         }
       </div>
 
-      <button
+      <a
+        href="/Search"
         class="rounded-full text-center btn bg-transparent btn-wide link border-2"
-        >view more</button
+        >view more</a
       >
     </section>
+    <div class="divider text-slate-400 mx-auto w-4/5"></div>
+
+    <section
+    class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-10 justify-center items-center"
+  >
+    <h1 class="md:text-6xl text-4xl font-extrabold uppercase antialiased">
+      Top ventas
+    </h1>
+    <div
+      class="w-full grid md:grid-cols-4 grid-cols-2 grid-rows-auto place-content-center place-items-center gap-4"
+    >
+      {
+        data.map((shirt) => (
+          <ProductCard
+            id={shirt.id}
+            Discount=""
+            alt={shirt.Descripcion}
+            Image={shirt.Imagen}
+            ProductName={shirt.NombreProducto}
+            Price={shirt.Precio}
+          />
+        ))
+      }
+    </div>
+
+    <a
+      href="/Search"
+      class="rounded-full text-center btn bg-transparent btn-wide link border-2"
+      >view more</a
+    >
+  </section>
 
     <section
       class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-10 justify-center items-center"
     >
-    <h class="text-4xl md:text-6xl uppercase font-extrabold antialiased text-center">Categorias</h>
+      <h
+        class="text-4xl md:text-6xl uppercase font-extrabold antialiased text-center"
+        >Categorias</h
+      >
       <div
         class="bg-slate-200 rounded-2xl w-full h-[80vh] gap-4 p-10 grid md:grid-rows-2 grid-rows-3 grid-cols-2 md:grid-cols-3"
       >
@@ -155,7 +159,7 @@ const data = await GetAllProducts()
       </div>
     </section>
     <div class="w-11/12 md:w-3/5 mx-auto">
-    <SubscribeCard/>
-  </div>
+      <SubscribeCard />
+    </div>
   </main>
 </Layout>
