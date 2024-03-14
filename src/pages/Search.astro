@@ -4,13 +4,19 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Busqueda">
-    <div class="bg-base overflow-y-auto w-screen h-screen antialiased">
-        <div class="flex flex-row relative h-screen">
+  <div class=" md:flex hidden ml-10 text-sm breadcrumbs">
+    <ul>
+      <li><a>Home</a></li> 
+      <li><a>Busqueda</a></li> 
+    </ul>
+  </div>
+    <div class="bg-base overflow-y-auto w-full   antialiased">
+        <div class="flex flex-row relative h-full">
           <Sidebar/>
-          <div class="flex-1 overflow-auto w-4/5 ">
+          <div class="flex-1 overflow-auto h-screen w-4/5">
             <div class="w-full h-full ">
               <section class="text-gray-600 body-font">
-                <div class="container px-5 py-24 mx-auto">
+                <div class="container px-5 mt-5 mx-auto">
                   <div class="flex flex-wrap -m-4">
                     <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
                       <a class="block relative h-48 rounded overflow-hidden">
@@ -100,3 +106,7 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </div>
 </Layout>
+
+<style>
+
+</style>

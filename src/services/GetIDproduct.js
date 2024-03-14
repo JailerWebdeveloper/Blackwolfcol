@@ -1,6 +1,6 @@
 export const GetIDproduct =async (id) =>{
     const res = await fetch(
-        `https://backend-wolf.vercel.app/ProductoIndividual/${id}`
+        `https://backend-wolf-psi.vercel.app/ProductoIndividual/${id}`
       );
 
 try{

@@ -2,16 +2,14 @@
 export const prerender = false;
 import Layout from "../layouts/Layout.astro";
 import { GetIDproduct } from "../services/GetIDproduct.js";
+import AddToCartButton from "../components/AddtoCar.jsx";
 
 const { id } = Astro.params;
 const product = await GetIDproduct(id);
 if (product === "NotFound") {
   return Astro.redirect("/404"); // Redirect to 404 page if product not found
 }
-const opciones = product.producto.TallasColores;
-
 const resImage = product.producto.Imagen;
-console.log(opciones);
 ---
 
 <Layout title="">
@@ -21,7 +19,7 @@ console.log(opciones);
         <img
           alt="ecommerce"
           class="lg:w-1/2 w-full h-[400px] object-contain border-2 rounded-2xl"
-          src=`https://backend-wolf.vercel.app/imagen/${resImage}`
+          src=`https://backend-wolf-psi.vercel.app/imagen/${resImage}`
         />
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <h2 class="ml-3 text-sm title-font text-gray-500 tracking-widest">
@@ -32,55 +30,19 @@ console.log(opciones);
           >
             {product.producto.NombreProducto}
           </h1>
-          <p class="font-bold uppercase text-black antialised mt-5 text-4xl">${product.producto.Precio}</p>
+          <p class="font-bold uppercase text-black antialised mt-5 text-4xl">
+            ${product.producto.Precio}
+          </p>
           <p class="leading-relaxed mt-5">
             {product.producto.Descripcion}
           </p>
           <div class="divider max-auto rounded-full"></div>
-          <div class="flex flex-col  justify-center mt-6 items-start mb-5">
-            <div class="flex items-center">
-              <span class="mr-3">Color</span>
-              <div class="w-full flex gap-5">
-                {
-                  opciones.map((valor) => (
-                    <button
-                      name="TallaSeleccionada"
-                      class="btn w-32 hover:ring transition-all focus:bg-black focus:text-white text-black border-2 border-gray-400 border-dashed focus:border-none"
-                    >
-                      {valor.Color}
-                    </button>
-                  ))
-                }
-              </div>
-            </div>
-            <div class="divider"></div>
-            <div class="flex items-center">
-              <span class="mr-3">Talla</span>
-              <div class="w-full flex gap-5">
-                {
-                  opciones.map((valor) => (
-                    <button
-                      name="TallaSeleccionada"
-                      class="btn w-32 hover:ring transition-all focus:bg-black focus:text-white text-black border-2 border-gray-400 border-dashed focus:border-none"
-                    >
-                      {valor.Talla}
-                    </button>
-                  ))
-                }
-              </div>
-            </div>
-          </div>
-          <div class="flex md:justify-normal  md:gap-5 py-5 justify-between">
-            <div class="join">
-              <button class="btn join-item">-</button>
-              <span class="btn join-item">1</span>
-              <button class="btn join-item">+</button>
-            </div>
-            <button
-              class="flex  text-white bg-black border-0 py-2 px-6 focus:outline-none transition-all hover:bg-yellow-400 rounded-full"
-              >Añadir Producto</button
-            >
-          </div>
+   
+          <AddToCartButton
+            client:load
+            id={id}
+            producto={product.producto}
+          />
         </div>
       </div>
     </div>

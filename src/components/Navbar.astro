@@ -1,5 +1,5 @@
 ---
-import { ShoppingCart, Search, AlignJustify } from "lucide-astro";
+import { ShoppingCart, Search, AlignJustify ,AtSign} from "lucide-astro";
 ---
 
 <nav
@@ -16,16 +16,33 @@ import { ShoppingCart, Search, AlignJustify } from "lucide-astro";
       <div class="drawer-side">
         <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"
         ></label>
-        <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+        
+        <ul
+          class="menu p-4 w-80 min-h-full py-10 px-2 bg-base-200 text-base content"
+        >
+        <img class=" w-36 my-2 mx-auto" src="./Logo.svg" alt="logo"/>
+        <div class="divider "></div>
           <!-- Sidebar content here -->
-          <li><a>Sidebar Item 1</a></li>
-          <li><a>Sidebar Item 2</a></li>
+          <li class="flex"><a><Search class="w-5 z-10"/> Buscar</a></li>
+          <li>
+            <details>
+              <summary> <AlignJustify class="w-5" />Categorias</summary>
+              <ul class="p-2">
+                <li><a>Anime</a></li>
+                <li><a>Urbano</a></li>
+              </ul>
+            </details>
+          </li>
+          <li class="flex"><a><AtSign class="w-5" />Redes Sociales</a></li>
         </ul>
       </div>
     </div>
-    <div class="w-42 hover:bg-slate-300 rounded-xl p-2 transition-all hover:cursor-pointer">
+    <a
+      href="/"
+      class="w-42 hover:bg-slate-300 rounded-xl p-2 transition-all hover:cursor-pointer"
+    >
       <img src="/Logo.svg" class="w-40" alt="Blackwolf Logo" />
-    </div>
+    </a>
     <ul class="menu menu-horizontal md:flex hidden px-1 z-10">
       <li><a>Tienda</a></li>
       <li>
