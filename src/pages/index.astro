@@ -31,25 +31,29 @@ const data = await GetAllProducts();
     <section
       class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-10 justify-center items-center"
     >
-      <h1 class="md:text-6xl mx-auto my-auto text-4xl font-extrabold uppercase antialiased">
+      <h1
+        class="md:text-6xl mx-auto my-auto text-4xl font-extrabold uppercase antialiased"
+      >
         Nueva coleccion
       </h1>
       <div
-      class="w-full grid md:grid-cols-4 grid-cols-2  place-content-center place-items-center gap-4"
-    >
-      {
-        data.slice(0, 4).map((shirt) => (
-          <ProductCard
-            id={shirt.id}
-            Discount=""
-            alt={shirt.Descripcion}
-            Image={shirt.Imagen}
-            ProductName={shirt.NombreProducto}
-            Price={shirt.Precio}
-          />
-        ))
-      }
-      </div> 
+        class="w-full grid md:grid-cols-4 grid-cols-2 place-content-center place-items-center gap-4"
+      >
+        {
+          data
+            .slice(0, 4)
+            .map((shirt) => (
+              <ProductCard
+                id={shirt.id}
+                Discount=""
+                alt={shirt.Descripcion}
+                Image={shirt.Imagen}
+                ProductName={shirt.NombreProducto}
+                Price={shirt.Precio}
+              />
+            ))
+        }
+      </div>
 
       <a
         href="/Search"
@@ -60,34 +64,38 @@ const data = await GetAllProducts();
     <div class="divider text-slate-400 mx-auto w-4/5"></div>
 
     <section
-    class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-10 justify-center items-center"
-  >
-    <h1 class="md:text-6xl mx-auto my-auto text-4xl font-extrabold uppercase antialiased">
-      Top ventas
-    </h1>
-    <div
-    class="w-full grid md:grid-cols-4 grid-cols-2 grid-rows-1 overflow-hidden place-content-center place-items-center gap-4"
-  >
-    {
-      data.slice(0, 4).map((shirt) => (
-        <ProductCard
-          id={shirt.id}
-          Discount=""
-          alt={shirt.Descripcion}
-          Image={shirt.Imagen}
-          ProductName={shirt.NombreProducto}
-          Price={shirt.Precio}
-        />
-      ))
-    }
-    </div>
-
-    <a
-      href="/Search"
-      class="rounded-full text-center btn bg-transparent btn-wide link border-2"
-      >view more</a
+      class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-10 justify-center items-center"
     >
-  </section>
+      <h1
+        class="md:text-6xl mx-auto my-auto text-4xl font-extrabold uppercase antialiased"
+      >
+        Top ventas
+      </h1>
+      <div
+        class="w-full grid md:grid-cols-4 grid-cols-2 grid-rows-1 overflow-hidden place-content-center place-items-center gap-4"
+      >
+        {
+          data
+            .slice(0, 4)
+            .map((shirt) => (
+              <ProductCard
+                id={shirt.id}
+                Discount=""
+                alt={shirt.Descripcion}
+                Image={shirt.Imagen}
+                ProductName={shirt.NombreProducto}
+                Price={shirt.Precio}
+              />
+            ))
+        }
+      </div>
+
+      <a
+        href="/Search"
+        class="rounded-full text-center btn bg-transparent btn-wide link border-2"
+        >view more</a
+      >
+    </section>
 
     <section
       class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-10 justify-center items-center"

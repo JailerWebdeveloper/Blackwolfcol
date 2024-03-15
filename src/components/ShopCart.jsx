@@ -1,10 +1,21 @@
-import { useStore } from '@nanostores/react';
-import { cartItems,getCartItems } from '../services/Store';
-
+import Cookies from 'js-cookie';
+import { useState,useEffect } from 'react';
 const ShopCart = () => {
-    const $cartItems = useStore(cartItems);
-    const useCartitems = getCartItems();
-    console.log(useCartitems)
+  const getCartFromCookies = () => {
+    try {
+      const cartCookie = Cookies.get('cart');
+      if(cartCookie) return JSON.parse(cartCookie);
+      else return [];
+    } catch (error) {
+      console.error("Error retrieving cart from cookies:", error);
+      return null;
+    }
+  };
+  
+  const cart = getCartFromCookies()
+  console.log(cart);
+
+  
   return (
     <>
       <div className="dropdown dropdown-end">
@@ -34,9 +45,9 @@ const ShopCart = () => {
           className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
         >
           <div className="card-body">
-          {Object.values($cartItems).length ? (
+          {Object.values(cart).length ? (
         <ul>
-          {Object.values($cartItems).map(cartItem => (
+          {Object.values(cart).map(cartItem => (
             <li>
                 <p>{cartItem.nombre}</p>
                 <p>{cartItem.quantity}</p>

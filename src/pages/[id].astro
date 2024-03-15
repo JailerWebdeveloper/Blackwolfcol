@@ -16,14 +16,14 @@ console.log (datos)
 const isLoading = !product; 
 ---
 
-<Layout title="">
+<Layout title={id}>
   {isLoading ?<p>loading</p>  : <div class="w-full min-h-[80vh] items-center flex md:flex-row py-4  flex-col ">
     <!-- Image -->
     <div class="h-full w-full md:w-1/2  px-10 flex">
       <CarrouselProduct client:load ArrayImagenes={resImage} />
     </div>
 
-    <div class="h-full md:w-1/2 w-full  gap-2 md:p-0 px-4 justify-start items-start flex flex-col ">
+    <div class="h-full md:w-1/2 w-full  gap-2 px-4 justify-start items-start flex flex-col ">
       <h1 class="uppercase truncate text-5xl md:w-4/5 w-full font-extrabold text-black">{datos.NombreProducto}</h1>
       <p class="truncate w-full ml-2 text-gray-500 font-semibold">BlackWolf | {datos.Tematica}</p>
       <p class="truncate md:w-4/5 w-full ml-2 text-black font-semibold text-4xl uppercase">${datos.Precio}</p>
