@@ -1,0 +1,29 @@
+ {opciones.map((valor) => (
+              <button
+                key={valor.Color}
+                onClick={() => seleccionarcolor(valor.Color)}
+                className={`btn w-full hover:ring transition-all ${
+                  valor.Color === color
+                    ? "bg-black text-white border-none"
+                    : "text-black border-2 border-gray-400 border-dashed"
+                } `}
+              >
+                {valor.Color}
+              </button>
+            ))}
+
+
+
+            {opciones.map((valor) => (
+                <button
+                  key={valor.Talla}
+                  onClick={() => seleccionartalla(valor.Talla)}
+                  className={`btn w-full hover:ring transition-all ${
+                    valor.Talla === talla
+                      ? "bg-black text-white border-none"
+                      : "text-black border-2 border-gray-400 border-dashed"
+                  } `}
+                >
+                  {valor.Talla}
+                </button>
+              ))}

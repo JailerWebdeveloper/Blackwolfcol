@@ -6,7 +6,15 @@ const AddToCartButton = ({ id, producto }) => {
   const [talla, settalla] = useState("");
   const [color, setcolor] = useState("");
   const handleClick = () => {
-    addCartItem({ id: id, quantity: cantidad , talla : talla, color : color , price:producto.price ,nombre:producto.NombreProducto,imagen:producto.Imagen});
+    addCartItem({
+      id: id,
+      quantity: cantidad,
+      talla: talla,
+      color: color,
+      price: producto.price,
+      nombre: producto.NombreProducto,
+      imagen: producto.Imagen,
+    });
   };
 
   const seleccionartalla = (value) => {
@@ -31,45 +39,51 @@ const AddToCartButton = ({ id, producto }) => {
     setCantidad((prevCantidad) => Math.max(prevCantidad, newCantidad));
   };
 
-  console.log(cantidad)
-  console.log(talla)
-  console.log(color)
   return (
     <>
-      <div className="flex flex-col justify-center mt-6 items-start mb-5">
-        <div className="flex items-center">
-          <span className="mr-3">Color</span>
-          <div className="w-full flex gap-5">
-            {opciones.map((valor) => (
+    <p className="text-gray-500 antialiased tracking-wide font-semibold mb-1 ">Selecciona el Color</p>
+       <div className="grid md:grid-cols-4 p-1 grid-cols-2 mb-5 grid-rows-auto overflow-auto w-full gap-2">
+        {opciones.map((valor) => (
               <button
+                key={valor.Color}
                 onClick={() => seleccionarcolor(valor.Color)}
-                className="btn w-32 hover:ring transition-all focus:bg-black focus:text-white text-black border-2 border-gray-400 border-dashed focus:border-none"
+                className={`btn w-full hover:ring transition-all ${
+                  valor.Color === color
+                    ? "bg-black text-white border-none"
+                    : "text-black border-2 border-gray-400 border-dashed"
+                } `}
               >
                 {valor.Color}
               </button>
             ))}
-          </div>
+
+        </div>
+        <p className="text-gray-500 antialiased tracking-wide font-semibold mb-1 ">Selecciona la Talla</p>
+
+        <div className="grid md:grid-cols-4 p-1 grid-cols-2 grid-rows-auto overflow-auto w-full gap-2">
+ 
+            {opciones.map((valor) => (
+                <button
+                  key={valor.Talla}
+                  onClick={() => seleccionartalla(valor.Talla)}
+                  className={`btn w-full hover:ring transition-all ${
+                    valor.Talla === talla
+                      ? "bg-black text-white border-none"
+                      : "text-black border-2 border-gray-400 border-dashed"
+                  } `}
+                >
+                  {valor.Talla}
+                </button>
+              ))}
+
         </div>
         <div className="divider"></div>
-        <div className="flex items-center">
-          <span className="mr-3">Talla</span>
-          <div className="w-full flex gap-5">
-            {opciones.map((valor) => (
-              <button
-                onClick={() => seleccionartalla(valor.Talla)}
-                className={`btn w-32 hover:ring transition-all ${talla==valor.talla ?"bg-black text-white  border-none" :""}  text-black border-2 border-gray-400 border-dashed`}
-              >
-                {valor.Talla}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
       <div
         id="añadircarrito"
-        className=" flex md:justify-normal  md:gap-5 py-5 justify-between "
+        className=" flex md:flex-row flex-col  w-full items-center justify-center gap-5"
       >
-        <div className="join">
+     
+        <div className="join md:w-1/2 ">
           <button
             className={`btn btn-primary join-item ${
               cantidad === 0 ? "btn-disabled" : ""
@@ -90,7 +104,11 @@ const AddToCartButton = ({ id, producto }) => {
           </button>
         </div>
         <button
-          className={`btn btn-primary btn-wide ${ talla=="" || color =="" || cantidad==0 ? "btn-disabled" : "btn-primary"}  `}
+          className={`btn btn-primary mx-auto md:w-1/2 w-full ${
+            talla == "" || color == "" || cantidad == 0
+              ? "btn-disabled"
+              : "btn-primary"
+          }  `}
           form="añadircarrito"
           onClick={handleClick}
         >
