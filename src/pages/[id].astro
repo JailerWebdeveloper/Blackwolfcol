@@ -3,6 +3,7 @@ export const prerender = false;
 import Layout from "../layouts/Layout.astro";
 import { GetIDproduct } from "../services/GetIDproduct.js";
 import AddToCartButton from "../components/AddtoCar.jsx";
+import CarrouselProduct from "../components/Carrousel";
 
 const { id } = Astro.params;
 const product = await GetIDproduct(id);
@@ -12,17 +13,14 @@ if (product === "NotFound") {
 const resImage = product.producto.Imagen;
 const datos =product.producto
 console.log (datos)
+const isLoading = !product; 
 ---
 
 <Layout title="">
-  <div class="w-full min-h-[80vh] items-center flex md:flex-row py-4  flex-col ">
+  {isLoading ?<p>loading</p>  : <div class="w-full min-h-[80vh] items-center flex md:flex-row py-4  flex-col ">
     <!-- Image -->
     <div class="h-full w-full md:w-1/2  px-10 flex">
-      <img
-        alt="ecommerce"
-        class="w-full h-[500px] object-contain border-2 rounded-2xl"
-        src=`https://backend-wolf-psi.vercel.app/imagen/${resImage}`
-      />
+      <CarrouselProduct client:load ArrayImagenes={resImage} />
     </div>
 
     <div class="h-full md:w-1/2 w-full  gap-2 md:p-0 px-4 justify-start items-start flex flex-col ">
@@ -35,5 +33,6 @@ console.log (datos)
         <AddToCartButton client:load id={id} producto={datos} />
       </div>
     </div>
-  </div>
+  </div>}
+  
 </Layout>

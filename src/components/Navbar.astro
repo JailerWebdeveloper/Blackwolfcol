@@ -1,5 +1,6 @@
 ---
 import { ShoppingCart, Search, AlignJustify ,AtSign} from "lucide-astro";
+import ShopCart from "../components/ShopCart"
 ---
 
 <nav
@@ -65,25 +66,7 @@ import { ShoppingCart, Search, AlignJustify ,AtSign} from "lucide-astro";
       <input type="text" class="grow" placeholder="Search" />
     </label>
 
-    <div class="dropdown dropdown-end">
-      <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-        <div class="indicator">
-          <ShoppingCart class="w-8" />
-          <span class="badge badge-sm indicator-item">8</span>
-        </div>
-      </div>
-      <div
-        tabindex="0"
-        class="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
-      >
-        <div class="card-body">
-          <span class="font-bold text-lg">8 Items</span>
-          <span class="text-info">Subtotal: $999</span>
-          <div class="card-actions">
-            <button class="btn btn-primary btn-block">View cart</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <ShopCart client:load/>
+    
   </div>
 </nav>

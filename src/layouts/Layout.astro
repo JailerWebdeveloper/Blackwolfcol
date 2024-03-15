@@ -8,7 +8,6 @@ const { title } = Astro.props;
 
 import BarraAnuncio from '../components/BarraAnuncio.astro'
 import Navbar from '../components/Navbar.astro'
-import { ViewTransitions } from "astro:transitions";
 import Footer from "./Footer.astro";
 ---
 
@@ -19,7 +18,7 @@ import Footer from "./Footer.astro";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/Capa 0.png" />
     <meta name="generator" content={Astro.generator} />
-    <ViewTransitions/>
+    
     <AstroSeo
       title="Blackwolf"
       description=""
@@ -87,4 +86,5 @@ import Footer from "./Footer.astro";
       }
     </style>
   </body>
+  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 </html>

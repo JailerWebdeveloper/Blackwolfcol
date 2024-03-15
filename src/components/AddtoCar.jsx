@@ -11,9 +11,9 @@ const AddToCartButton = ({ id, producto }) => {
       quantity: cantidad,
       talla: talla,
       color: color,
-      price: producto.price,
+      price: producto.Precio,
       nombre: producto.NombreProducto,
-      imagen: producto.Imagen,
+      imagen: producto.Imagen[0],
     });
   };
 
