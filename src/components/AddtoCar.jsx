@@ -80,7 +80,7 @@ const AddToCartButton = ({ id, producto }) => {
 
   const setCartInCookies = (cartItems) => {
     try {
-      Cookies.set("cart", JSON.stringify(cartItems), { expires: 7 }); // Set expiration to 7 days
+      Cookies.set("cart", JSON.stringify(cartItems), { expires: 1 , path: "/" } ); // Set expiration to 7 days
     } catch (error) {
       console.error("Error storing cart in cookies:", error);
     }
