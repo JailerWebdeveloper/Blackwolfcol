@@ -19,7 +19,7 @@ const ShopCart = () => {
   
   return (
     <Fragment>
-      <div className="dropdown dropdown-end">
+      <div className="dropdown dropdown-end z-10 ">
         <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
           <div className="indicator">
             <svg
@@ -47,7 +47,7 @@ const ShopCart = () => {
         >
           <div className="card-body">
           {Object.values(cart).length ? (
-        <ul className='flex flex-col gap-2 p-1 h-[500px] overflow-auto'>
+        <ul className='flex flex-col gap-2 p-1 h-[400px] z-10 overflow-auto'>
           {Object.values(cart).map(cartItem => (
             <li className='border shadow-xl rounded-xl bg-slate-100 w-full h-[100px] flex gap-1'>
               <div className='w-1/2 p-2'>
@@ -57,6 +57,8 @@ const ShopCart = () => {
                 <p className='text-gray-700 text-xs mb-1 font-bold'>{cartItem.nombre}</p>
                 <p className='text-gray-500 text-xs mb-1 font-semibold'>Cantidad :{cartItem.quantity}</p>
                 <p className='text-gray-500 text-xs mb-1 font-semibold'>Color :{cartItem.color}</p>
+                <p className='text-gray-500 text-xs mb-1 font-semibold'>Talla :{cartItem.talla}</p>
+
                 </div> 
             </li>
           ))}
