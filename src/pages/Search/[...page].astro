@@ -1,0 +1,77 @@
+---
+import Sidebar from "../../components/Sidebar.astro";
+import Layout from "../../layouts/Layout.astro";
+import { GetAllProducts } from "../../services/GetAllProducts";
+import { Paginate, Pagination, Breadcrumb } from "astro-headless-ui";
+
+const prods = await GetAllProducts();
+
+const { page: pageNumber } = Astro.params;
+---
+
+<Paginate data={prods} size="2" page={pageNumber}>
+  {
+    (page) => (
+      <div>
+        <Layout
+          title={pageNumber ? `Page ${pageNumber}` : "Pagination Example"}
+        >
+          <div class="md:flex hidden ml-10 text-sm breadcrumbs">
+            <Breadcrumb />
+
+            </ul>
+          </div>
+          <div class="bg-base overflow-y-auto w-full antialiased">
+            <div class="flex flex-row relative h-full">
+              <Sidebar />
+              <div class="flex-1 overflow-auto h-full w-4/5">
+                <div class="w-full h-full">
+                  <section class="text-gray-600 body-font">
+                    <div class="container px-5 mt-5 mx-auto">
+                      <div class="grid grid-cols-4 grid-rows-2">
+                        
+
+                        {page.data.map((post) => (
+                            <div class=" p-4 w-full">
+                          <a class="block relative h-48 rounded overflow-hidden">
+                            <img
+                              alt="ecommerce"
+                              class="object-cover object-center w-full h-full block"
+                              src="https://dummyimage.com/420x260"
+                            />
+                          </a>
+                          <div class="mt-4">
+                            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+                              CATEGORY
+                            </h3>
+                            <h2 class="text-gray-900 title-font text-lg font-medium">
+                              The Catalyzer
+                            </h2>
+                            <p class="mt-1">$16.00</p>
+                          </div>
+                        </div>
+                        ))}
+                      </div>
+                    </div>
+                  </section>
+                </div>
+                <div class="join w-full flex justify-center">
+  <a class="join-item btn">Atras</a>
+  <a class="join-item btn">{page.current}</a>
+  <a class="join-item btn">Siguiente</a>
+</div>
+              </div>
+              
+            </div>
+            
+          </div>
+        </Layout>
+      </div>
+    )
+  }
+  <!-- Render an error page if page number does not exist -->
+  <main slot="error">
+    <h1>This page does not exist!</h1>
+    <a href="/Search">Back</a>
+  </main>
+</Paginate>

@@ -28,7 +28,7 @@ const setCartInCookies = (cartItems) => {
     if (talla && color && cantidad > 0) {
       const cartItems = getCartFromCookies() || [];
       const existingItem = cartItems.find(
-        (item) => item.key === id && item.talla === talla && item.color === color
+        (item) => item.id === id && item.talla === talla && item.color === color
       );
 
       if (existingItem) {

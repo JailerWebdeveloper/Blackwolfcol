@@ -14,7 +14,6 @@ const ShopCart = () => {
   };
   
   const cart = getCartFromCookies()
-  console.log(cart);
 
   
   return (
@@ -65,7 +64,7 @@ const ShopCart = () => {
         </ul>
       ) : <p>¡Tu carrito está vacío!</p>}
             <div className="card-actions">
-              <button className="btn btn-primary btn-block">View cart</button>
+              <a href='Compras' className="btn btn-primary btn-block">Ver carrito</a>
             </div>
           </div>
         </div>

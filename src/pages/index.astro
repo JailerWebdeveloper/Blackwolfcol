@@ -29,7 +29,7 @@ const data = await GetAllProducts();
     </section>
 
     <section
-      class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-10 justify-center items-center"
+      class="w-full textured md:px-24 px-5 py-20  flex flex-col gap-10 justify-center items-center"
     >
       <h1
         class="md:text-6xl mx-auto my-auto text-4xl font-extrabold uppercase antialiased"
@@ -60,11 +60,12 @@ const data = await GetAllProducts();
         class="rounded-full text-center btn bg-transparent btn-wide link border-2"
         >view more</a
       >
+      <div class="divider text-slate-400 mx-auto w-4/5"></div>
+
     </section>
-    <div class="divider text-slate-400 mx-auto w-4/5"></div>
 
     <section
-      class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-10 justify-center items-center"
+      class="w-full textured md:px-24 px-5 py-20  flex flex-col gap-10 justify-center items-center"
     >
       <h1
         class="md:text-6xl mx-auto my-auto text-4xl font-extrabold uppercase antialiased"
@@ -72,7 +73,7 @@ const data = await GetAllProducts();
         Top ventas
       </h1>
       <div
-        class="w-full grid md:grid-cols-4 grid-cols-2 grid-rows-1 overflow-hidden place-content-center place-items-center gap-4"
+      class="w-full grid md:grid-cols-4 grid-cols-2 place-content-center place-items-center gap-4"
       >
         {
           data
@@ -98,7 +99,7 @@ const data = await GetAllProducts();
     </section>
 
     <section
-      class="w-full md:px-24 px-5 py-5 md:mt-20 mt-5 flex flex-col gap-10 justify-center items-center"
+      class="w-full textured md:px-24 px-5 py-20  flex flex-col gap-10 justify-center items-center"
     >
       <h
         class="text-4xl md:text-6xl uppercase font-extrabold antialiased text-center"
@@ -164,9 +165,8 @@ const data = await GetAllProducts();
           </p>
         </div>
       </div>
-    </section>
-    <div class="w-11/12 md:w-3/5 mx-auto">
       <SubscribeCard />
-    </div>
+    </section>
+
   </main>
 </Layout>

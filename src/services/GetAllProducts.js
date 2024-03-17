@@ -3,6 +3,5 @@ export const GetAllProducts = async () => {
     `https://backend-wolf-psi.vercel.app/Productos/todos`
   );
   const data = await res.json();
-  console.log(data)
   return data;
 };
