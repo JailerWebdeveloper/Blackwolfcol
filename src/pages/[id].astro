@@ -1,5 +1,4 @@
 ---
-export const prerender = false;
 import Layout from "../layouts/Layout.astro";
 import { GetIDproduct } from "../services/GetIDproduct.js";
 import AddToCartButton from "../components/AddtoCar.jsx";
@@ -19,7 +18,7 @@ const isLoading = !product;
 <Layout title={id}>
   {isLoading ?<p>loading</p>  : <div class="w-full min-h-[80vh] items-center flex md:flex-row py-4  flex-col ">
     <!-- Image -->
-    <div class="h-full w-full md:w-1/2  px-10 flex">
+    <div class="h-full w-full md:w-1/2  px-10 flex ">
       <CarrouselProduct client:load ArrayImagenes={resImage} />
     </div>
 
@@ -27,7 +26,7 @@ const isLoading = !product;
       <h1 class="uppercase truncate text-5xl md:w-4/5 w-full font-extrabold text-black">{datos.NombreProducto}</h1>
       <p class="truncate w-full ml-2 text-gray-500 font-semibold">BlackWolf | {datos.Tematica}</p>
       <p class="truncate md:w-4/5 w-full ml-2 text-black font-semibold text-4xl uppercase">${datos.Precio}</p>
-      <p class="md:w-4/5 w-full h-[100px] overflow-y-auto ml-2">{datos.Descripcion}</p>
+      <p class="md:w-4/5 w-full h-[70px] overflow-y-auto ml-2">{datos.Descripcion}</p>
       <div class="divider w-full md:w-4/5"></div>
       <div class="md:w-4/5 w-full ">
         <AddToCartButton client:load id={id} producto={datos} />

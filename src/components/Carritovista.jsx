@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-
+import axios from "axios";
 const Carritovista = () => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const [Factura,setFactura]=useState([])
 
   useEffect(() => {
     const cartFromCookies = getCartFromCookies();
@@ -13,6 +14,7 @@ const Carritovista = () => {
 
   const getCartFromCookies = () => {
     try {
+      
       const cartCookie = Cookies.get("cart");
       if (cartCookie) return JSON.parse(cartCookie);
       else return [];
@@ -36,6 +38,39 @@ const Carritovista = () => {
     setCart(updatedCart);
     calculateTotal(updatedCart);
   };
+
+
+  const handleComprar = async () => {
+    const dataform = cart.map((item) => ({
+      NombreProducto: item.nombre,
+      Cantidad: item.quantity,
+      Talla: item.talla,
+      Color: item.color,
+      Subtotal: item.price * item.quantity,
+    }));
+    const requestBody = { Productos: dataform, Total: total };
+
+    try {
+      const response = await axios.post(
+        `https://backend-wolf-psi.vercel.app/Creacion/factura`,
+        requestBody,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (!response.data) {
+        throw new Error("Failed to create factura");
+      }
+      const data = response.data;
+      const facturaLink = data.whatsappLink;
+      window.open(facturaLink, "_blank");
+    } catch (error) {
+      console.error("Error al intentar comprar:", error);
+    }
+  };
+  
 
   return (
     <>
@@ -206,6 +241,8 @@ const Carritovista = () => {
             <p>${total}</p>
           </li>
         </ul>
+
+        <button onClick={handleComprar} className="btn btn-primary w-full ">Comprar</button>
       </div>
     </>
   );

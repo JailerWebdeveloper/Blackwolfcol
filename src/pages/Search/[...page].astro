@@ -1,72 +1,90 @@
 ---
-import Sidebar from "../../components/Sidebar.astro";
+import Sidebar from "../../components/Sidebar";
 import Layout from "../../layouts/Layout.astro";
-import { GetAllProducts } from "../../services/GetAllProducts";
 import { Paginate, Pagination, Breadcrumb } from "astro-headless-ui";
+
+
+const GetAllProducts = async () => {
+  const res = await fetch(
+    `https://backend-wolf-psi.vercel.app/Productos/todos`
+  );
+  const data = await res.json();
+  return data;
+};
 
 const prods = await GetAllProducts();
 
 const { page: pageNumber } = Astro.params;
 ---
 
-<Paginate data={prods} size="2" page={pageNumber}>
+<Paginate data={prods} size="1" page={pageNumber}>
   {
     (page) => (
-      <div>
-        <Layout
-          title={pageNumber ? `Page ${pageNumber}` : "Pagination Example"}
-        >
-          <div class="md:flex hidden ml-10 text-sm breadcrumbs">
-            <Breadcrumb />
-
-            </ul>
-          </div>
+      <>
+        <div>
+          <Layout
+            title={pageNumber ? `Page ${pageNumber}` : "Pagination Example"}
+          >
+            <div class="md:flex hidden ml-10 text-sm breadcrumbs">
+              <Breadcrumb />
+            </div>
+         
           <div class="bg-base overflow-y-auto w-full antialiased">
             <div class="flex flex-row relative h-full">
-              <Sidebar />
+              <Sidebar client:load />
               <div class="flex-1 overflow-auto h-full w-4/5">
                 <div class="w-full h-full">
                   <section class="text-gray-600 body-font">
                     <div class="container px-5 mt-5 mx-auto">
                       <div class="grid grid-cols-4 grid-rows-2">
-                        
-
                         {page.data.map((post) => (
-                            <div class=" p-4 w-full">
-                          <a class="block relative h-48 rounded overflow-hidden">
-                            <img
-                              alt="ecommerce"
-                              class="object-cover object-center w-full h-full block"
-                              src="https://dummyimage.com/420x260"
-                            />
-                          </a>
-                          <div class="mt-4">
-                            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                              CATEGORY
-                            </h3>
-                            <h2 class="text-gray-900 title-font text-lg font-medium">
-                              The Catalyzer
-                            </h2>
-                            <p class="mt-1">$16.00</p>
+                          <div class=" p-4 w-full">
+                            <a
+                              href={`/${post.id}`}
+                              class="block relative h-48 rounded border-2 overflow-hidden"
+                            >
+                              <img
+                                alt="ecommerce"
+                                class="object-contain object-center w-full h-full block"
+                                src={`https://backend-wolf-psi.vercel.app/imagen/${post.Imagen[0]}`}
+                              />
+                            </a>
+                            <div class="mt-4">
+                              <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+                                {post.Tematica}
+                              </h3>
+                              <h2 class="text-gray-900 title-font text-lg font-medium">
+                                {post.NombreProducto}
+                              </h2>
+                              <p class="mt-1">${post.Precio}</p>
+                            </div>
                           </div>
-                        </div>
                         ))}
                       </div>
                     </div>
                   </section>
                 </div>
                 <div class="join w-full flex justify-center">
-  <a class="join-item btn">Atras</a>
-  <a class="join-item btn">{page.current}</a>
-  <a class="join-item btn">Siguiente</a>
-</div>
+                  <a
+                    href={`/Search/${page.current - 1}`}
+                    class={`join-item btn ${page.current == 1 ? "btn-disabled" : ""}`}
+                  >
+                    Atras
+                  </a>
+                  <a class="join-item btn">{page.current}</a>
+                  <a
+                    href={`/Search/${page.current + 1}`}
+                    class={`join-item btn ${page.current == page.total ? "btn-disabled" : ""}`}
+                  >
+                    Siguiente
+                  </a>
+                </div>
               </div>
-              
             </div>
-            
           </div>
-        </Layout>
-      </div>
+        </div>
+      </Layout>
+      </>
     )
   }
   <!-- Render an error page if page number does not exist -->

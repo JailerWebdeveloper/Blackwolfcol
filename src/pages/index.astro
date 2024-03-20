@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import ProductCard from "../components/ProductCard.astro";
 export const prerender = false;
 
-import SubscribeCard from "../components/SubscribeCard.astro";
+import SubscribeCard from "../components/SubscribeCard.jsx";
 
 import { GetAllProducts } from "../services/GetAllProducts.js";
 
@@ -29,15 +29,15 @@ const data = await GetAllProducts();
     </section>
 
     <section
-      class="w-full textured md:px-24 px-5 py-20  flex flex-col gap-10 justify-center items-center"
+      class="w-full textured md:px-24 px-5 py-20  flex flex-col  justify-center items-center"
     >
       <h1
-        class="md:text-6xl mx-auto my-auto text-4xl font-extrabold uppercase antialiased"
+        class="md:text-6xl mx-auto text-4xl font-extrabold mb-10 uppercase antialiased"
       >
         Nueva coleccion
       </h1>
       <div
-        class="w-full grid md:grid-cols-4 grid-cols-2 place-content-center place-items-center gap-4"
+        class="w-full grid md:grid-cols-4 grid-cols-2 place-content-center place-items-center"
       >
         {
           data
@@ -57,7 +57,7 @@ const data = await GetAllProducts();
 
       <a
         href="/Search"
-        class="rounded-full text-center btn bg-transparent btn-wide link border-2"
+        class="rounded-full mt-10 text-center btn bg-transparent btn-wide link border-2"
         >view more</a
       >
       <div class="divider text-slate-400 mx-auto w-4/5"></div>
@@ -65,10 +65,10 @@ const data = await GetAllProducts();
     </section>
 
     <section
-      class="w-full textured md:px-24 px-5 py-20  flex flex-col gap-10 justify-center items-center"
+      class="w-full textured md:px-24 px-5 py-20  flex flex-col  justify-center items-center"
     >
       <h1
-        class="md:text-6xl mx-auto my-auto text-4xl font-extrabold uppercase antialiased"
+        class="md:text-6xl mx-auto  mb-10 text-4xl font-extrabold uppercase antialiased"
       >
         Top ventas
       </h1>
@@ -93,7 +93,7 @@ const data = await GetAllProducts();
 
       <a
         href="/Search"
-        class="rounded-full text-center btn bg-transparent btn-wide link border-2"
+        class="rounded-full text-center mt-10 btn bg-transparent btn-wide link border-2"
         >view more</a
       >
     </section>
@@ -165,8 +165,9 @@ const data = await GetAllProducts();
           </p>
         </div>
       </div>
-      <SubscribeCard />
+      <SubscribeCard  client:load/>
     </section>
 
   </main>
 </Layout>
+../components/SubscribeCard.jsx/index.js

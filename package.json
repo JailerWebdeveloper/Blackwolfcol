@@ -23,6 +23,7 @@
     "astro-headless-ui": "^0.0.30",
     "astro-i18next": "^1.0.0-beta.21",
     "astro-meta-tags": "^0.2.1",
+    "axios": "^1.6.8",
     "flowbite": "^2.3.0",
     "js-cookie": "^3.0.5",
     "lucide-astro": "^0.349.0",
