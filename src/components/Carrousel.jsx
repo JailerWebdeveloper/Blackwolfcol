@@ -39,7 +39,7 @@ const CarrouselProduct = ({ ArrayImagenes }) => {
               <div key={index} className={`hidden duration-700 ease-in-out ${index === 0 ? 'active' : ''}`} data-carousel-item={index === 0 ? 'active' : ''}>
                 <img
                   src={`https://backend-wolf-psi.vercel.app/imagen/${imagen}`}
-                  className="absolute block -translate-x-1/2 object-cover  -translate-y-1/2 top-1/2 left-1/2"
+                  className="absolute block -translate-x-1/2 object-cover h-full  -translate-y-1/2 top-1/2 left-1/2"
                   alt={`Slide ${index + 1}`}
                 />
               </div>

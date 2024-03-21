@@ -1,23 +1,21 @@
 import { useState, useRef } from "react";
 import Cookies from "js-cookie";
-import {handleAddToCart} from "../services/Store"
+import { handleAddToCart } from "../services/Store";
 const AddToCartButton = ({ id, producto }) => {
   const [cantidad, setcantidad] = useState(1);
   const opciones = producto.TallasColores;
   const [talla, settalla] = useState("");
   const [color, setcolor] = useState("");
   const modalRef = useRef(null);
-  console.log(producto)
-  const handlereloadpage = () =>{
+  console.log(producto);
+  const handlereloadpage = () => {
     window.location.reload();
-  
-  }
-  
-  const handlesend =() =>{
-    handleAddToCart(producto,talla,color,cantidad,id)
-    modalRef.current.click();
+  };
 
-  }
+  const handlesend = () => {
+    handleAddToCart(producto, talla, color, cantidad, id);
+    modalRef.current.click();
+  };
 
   const seleccionartalla = (value) => {
     settalla(value);
@@ -41,8 +39,6 @@ const AddToCartButton = ({ id, producto }) => {
     setCantidad((prevCantidad) => Math.max(prevCantidad, newCantidad));
   };
 
-
-
   return (
     <>
       <p className="text-gray-500 antialiased tracking-wide font-semibold mb-1 ">
@@ -50,17 +46,19 @@ const AddToCartButton = ({ id, producto }) => {
       </p>
       <div className="grid md:grid-cols-4 p-1 grid-cols-2 mb-5 grid-rows-auto overflow-auto w-full gap-2">
         {opciones.map((valor) => (
-          <button
-            key={valor.Color}
-            onClick={() => seleccionarcolor(valor.Color)}
-            className={`btn w-full hover:ring transition-all ${
-              valor.Color === color
-                ? "bg-black text-white border-none"
-                : "text-black border-2 border-gray-400 border-dashed"
-            } `}
-          >
-            {valor.Color}
-          </button>
+          <div className={` ${valor.Color ? "" : "hidden"}`}>
+            <button
+              key={valor.Color}
+              onClick={() => seleccionarcolor(valor.Color)}
+              className={`btn w-full hover:ring transition-all ${
+                valor.Color === color
+                  ? "bg-black text-white border-none"
+                  : "text-black border-2 border-gray-400 border-dashed"
+              } `}
+            >
+              {valor.Color}
+            </button>
+          </div>
         ))}
       </div>
       <p className="text-gray-500 antialiased tracking-wide font-semibold mb-1 ">

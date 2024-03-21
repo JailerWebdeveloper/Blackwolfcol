@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-import { Sliders, ChevronRight } from "lucide-astro";
+import { useFilter } from "../services/FilterContext.jsx";
+const Sidebar = ({ filtro }) => {
 
-const Sidebar = () => {
   const [minPrice, setMinPrice] = useState(25000);
   const [maxPrice, setMaxPrice] = useState(100000);
 
+  const { setFilter } = useFilter();
+
   const handlePriceChange = (event) => {
     setMinPrice(event.target.value);
+  };
+
+  const handleFilterChange = (newFilter) => {
+    setFilter(newFilter);
   };
 
   return (
@@ -33,7 +39,10 @@ const Sidebar = () => {
         </div>
         <div className="divider h-1 rounded-full"></div>
         <ul className="flex flex-col justify-center gap-3 w-full">
-          <li className="flex justify-between items-center hover:bg-slate-200 hover:cursor-pointer p-2 transition-all rounded-md">
+          <li
+            onClick={handleFilterChange("http://localhost:3000/Producto/Dragonball")}
+            className="flex justify-between items-center hover:bg-slate-200 hover:cursor-pointer p-2 transition-all rounded-md"
+          >
             <p className="text-lg antialiased">Camisas</p>
             <svg
               class="w-6 h-6 text-black"

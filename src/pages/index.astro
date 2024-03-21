@@ -32,12 +32,12 @@ const data = await GetAllProducts();
       class="w-full textured md:px-24 px-5 py-20  flex flex-col  justify-center items-center"
     >
       <h1
-        class="md:text-6xl mx-auto text-4xl font-extrabold mb-10 uppercase antialiased"
+        class="md:text-6xl  text-4xl font-extrabold mb-10 uppercase antialiased"
       >
         Nueva coleccion
       </h1>
       <div
-        class="w-full grid md:grid-cols-4 grid-cols-2 place-content-center place-items-center"
+        class="w-full grid md:grid-cols-4 grid-cols-2  grid-rows-1 "
       >
         {
           data
@@ -68,12 +68,12 @@ const data = await GetAllProducts();
       class="w-full textured md:px-24 px-5 py-20  flex flex-col  justify-center items-center"
     >
       <h1
-        class="md:text-6xl mx-auto  mb-10 text-4xl font-extrabold uppercase antialiased"
+        class="md:text-6xl  mb-10 text-4xl font-extrabold uppercase antialiased"
       >
         Top ventas
       </h1>
       <div
-      class="w-full grid md:grid-cols-4 grid-cols-2 place-content-center place-items-center gap-4"
+      class="w-full grid md:grid-cols-4 grid-cols-2 grid-rows-1 gap-4"
       >
         {
           data
@@ -170,4 +170,3 @@ const data = await GetAllProducts();
 
   </main>
 </Layout>
-../components/SubscribeCard.jsx/index.js

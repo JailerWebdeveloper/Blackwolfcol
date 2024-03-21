@@ -35,7 +35,7 @@ const ShopCart = () => {
               />
             </svg>
 
-            <span className="badge badge-sm indicator-item">8</span>
+            <span className="badge badge-sm indicator-item">{cart.length}</span>
           </div>
         </div>
         <div
